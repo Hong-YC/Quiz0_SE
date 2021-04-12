@@ -1,2 +1,5 @@
-package PACKAGE_NAME;public class Database {
+public class Database {
+    public void Display(){
+        
+    }
 }

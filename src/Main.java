@@ -28,10 +28,11 @@ public class Main {
                 System.out.println("Readline Error");
             }
         }
+        //Initiate the program
+        Program program = new Program(MonitorPeriod);
 
         //Read Patient & Sensor input
-
-        //state variable which indicate the current Patient
+            //state variable which indicate the current Patient
         Patient state = null;
         try {
             //Read the first Patient
@@ -44,6 +45,7 @@ public class Main {
                         if(checkPatient(command)){
                             //construct the patient by the parameters, refresh the state
                             state = new Patient(command[1]);
+                            program.addPatient(state, Integer.parseInt(command[2]));
                             break;
                         }
                         else{
@@ -55,9 +57,14 @@ public class Main {
                             System.out.println("Need to specify Patient first! ");
                             break;
                         }
+                        //{device_category} {device_name} {factor_dataset_file} {safe_range_lower_bound} {safe_range_upper_bound}
                         if(checkDevice(command)){
                             //construct the device by the parameters, add it to patient?
-                            Device device = new Device();
+                            Device device = new Device(command[1]);
+                            device.monitorPatient(state, command[0], command[2]);
+                            double lower_bound =  Double.parseDouble(command[3]);
+                            double upper_bound =  Double.parseDouble(command[4]);
+                            program.addSafeRange(state, command[0], lower_bound, upper_bound);
                         }
                         else{
                             System.out.println("Invalid Device input");
@@ -71,11 +78,16 @@ public class Main {
 
                 s = reader.readLine();
             }while(!s.isEmpty());
+
             reader.close();
 
         }catch(IOException ex){
             System.out.println("Readline Error");
         }
+
+        //Input end, start execute the program
+        program.Run();
+        program.displayDatabase();
 
     }
 

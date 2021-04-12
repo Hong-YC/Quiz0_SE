@@ -1,14 +1,22 @@
+import java.io.FileNotFoundException;
+
 public class Device {
     private Patient monitoredPatient;
     private Sensor sensor;
-    private void attachedSensor(String sensorType) {
-        sensor = SensorFactory.valueOf(sensorType).getInstance(this, monitoredPatient);
+    private String name;
+
+    public Device(String name) {
+        this.name = name;
+    }
+
+    private void attachedSensor(String sensorType, String factorDataSet) throws FileNotFoundException {
+        sensor = SensorFactory.valueOf(sensorType).getInstance(this, monitoredPatient, factorDataSet);
     }
 
     // attach the device to the patient, specify the sensor type
-    public void monitorPatient(Patient patient, String sensorType){
+    public void monitorPatient(Patient patient, String sensorType, String factorDataSet) throws FileNotFoundException {
         monitoredPatient = patient;
-        attachedSensor(sensorType);
+        attachedSensor(sensorType, factorDataSet);
         monitoredPatient.attach(this);
 
     }
