@@ -33,6 +33,7 @@ public abstract class Sensor {
             System.out.println("File close fail!");
         }
     }
+
     public abstract double measure();
 }
 

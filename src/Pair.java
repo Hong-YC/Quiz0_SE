@@ -7,6 +7,14 @@ public class Pair<T1, T2> {
         this.y = y;
     }
 
+    public T1 getX() {
+        return x;
+    }
+
+    public T2 getY() {
+        return y;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

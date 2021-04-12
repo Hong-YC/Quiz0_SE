@@ -30,6 +30,7 @@ public class Main {
         }
         //Initiate the program
         Program program = new Program(MonitorPeriod);
+        Hospital hospital = new Hospital();
 
         //Read Patient & Sensor input
             //state variable which indicate the current Patient
@@ -45,6 +46,7 @@ public class Main {
                         if(checkPatient(command)){
                             //construct the patient by the parameters, refresh the state
                             state = new Patient(command[1]);
+                            hospital.addPatient(state);
                             program.addPatient(state, Integer.parseInt(command[2]));
                             break;
                         }

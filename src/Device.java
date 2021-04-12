@@ -27,10 +27,16 @@ public class Device {
         System.out.println("Not attached to Patient yet!");
         return -1;
     }
+    public String getType(){
+        return sensor.getClass().getName();
+    }
 
     public void print(){
         System.out.println("This device use sensor: " + sensor.toString());
         System.out.println("Attached to patient: " + monitoredPatient.getName());
     }
 
+    public String getName() {
+        return name;
+    }
 }

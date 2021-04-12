@@ -139,6 +139,12 @@ public class Testing {
         return false;
     }
 
+    public static void main(String[] args) {
+
+        Patient p = new Patient("haha");
+        System.out.println(p.getClass().getName());
+    }
+
 
 
 }

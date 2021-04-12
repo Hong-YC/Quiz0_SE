@@ -1,10 +1,11 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Hospital {
-    Set<Patient> ward ;
+    List<Patient> ward ;
     Hospital(){
-        ward = new HashSet();
+        ward = new ArrayList<>();
     }
     public void addPatient(Patient patient){
         ward.add(patient);

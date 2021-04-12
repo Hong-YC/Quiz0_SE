@@ -22,9 +22,10 @@ public class Program {
         safeRange.put(new Pair<>(patient, type), new Pair<>(lb, ub));
     }
 
-    
+
     public void Run(){
-        for(int i = 0; i <= monitorPeriod; i++){
+        for(int time = 0; time <= monitorPeriod; time++){
+            //loop through all Patient
 
 
 
@@ -33,6 +34,16 @@ public class Program {
     }
     public void displayDatabase(){
         db.Display();
+    }
+
+    private boolean checkRange(Patient patient, String type, double factor){
+        Pair<Double, Double> range = safeRange.get(new Pair(patient, type));
+        Double lowerBound = range.getX();
+        Double upperBound = range.getY();
+        if(factor < lowerBound || upperBound < factor){
+            return false;
+        }
+        return true;
     }
 
 }
