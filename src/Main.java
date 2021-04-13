@@ -66,7 +66,7 @@ public class Main {
                             device.monitorPatient(state, command[0], command[2]);
                             double lower_bound =  Double.parseDouble(command[3]);
                             double upper_bound =  Double.parseDouble(command[4]);
-                            program.addSafeRange(state, command[0], lower_bound, upper_bound);
+                            program.addSafeRange(device, lower_bound, upper_bound);
                         }
                         else{
                             System.out.println("Invalid Device input");
@@ -111,7 +111,7 @@ public class Main {
     private static boolean checkPatient(String[] s){
         if(s.length == 3){
             try{
-                double PatientPeriod = Double.parseDouble(s[1]);
+                double PatientPeriod = Double.parseDouble(s[2]);
                 if(PatientPeriod <= 0){
                     System.out.println("Patient period need to be an positive number!");
                 }

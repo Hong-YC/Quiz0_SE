@@ -17,10 +17,12 @@ public abstract class Sensor {
     protected double read(){
         try{
             String line = reader.readLine();
-            double value =  Double.parseDouble(line);
-            if(value < 0){
+            //Reach end of file
+            if(line == null){
                 return -1;
             }
+            double value =  Double.parseDouble(line);
+
             return value;
         }catch(IOException ex){
             return -1;

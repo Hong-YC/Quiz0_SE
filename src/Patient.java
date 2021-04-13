@@ -45,4 +45,8 @@ public class Patient {
     public String getName() {
         return name;
     }
+
+    public List<Device> getDevice(){
+        return attachedDevice;
+    }
 }
